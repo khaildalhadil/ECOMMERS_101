@@ -1,11 +1,18 @@
 import mongoose from 'mongoose';
 
 const ProdcutsSchmma = new mongoose.Schema({
-  itemName: String,
-  fullName: String,
-  dec: String,
-  itemImage: String,
-  price: Number
+  name: {
+    type: String,
+    // required: [true, "name is required"],
+  },
+  urlIamge: {
+    type: String,
+    // required: true,
+  },
+  price: {
+    type: String,
+    // required: true,
+  }
 }) 
 
 const Items = mongoose.model('Items', ProdcutsSchmma);

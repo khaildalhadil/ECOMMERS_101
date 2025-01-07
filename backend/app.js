@@ -1,11 +1,23 @@
 import express from "express";
 const app = express();
 
+import cors from 'cors';
+
 import dotenv from 'dotenv';
 dotenv.config();
 
 app.use(express.json());
-// app.use(express.statis('public'))
+app.use(express.static('public'))
+app.use(cors())
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*'); // allow all domains
+  res.setHeader('Access-Control-Allow-Methods', 'GET, PUT');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  
+  next();
+}); 
+
 
 export default app;
 

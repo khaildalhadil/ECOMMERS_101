@@ -1,26 +1,28 @@
+import { Link, NavLink } from "react-router-dom";
 
 
 export default function Header() {
   return (
     <div 
     className=
-      " z-20 bg-white w-4/5 text-lg absolute top-4 right-1/2 translate-x-1/2 py-4 px-2 flex justify-between items-center rounded text-gray-600">
+      " w-2/3 text-lg text-white  top-4 right-1/2 m-auto py-4 px-2 flex justify-between items-center rounded bg-">
       <div>
-        <img 
-        className="h-10"
-        src="./images/logo.png" alt="logo" />
+        <Link to="/">
+          <button>
+            <i 
+            class="fa-solid fa-cart-shopping"></i>
+          </button>
+        </Link>
       </div>
-      <div className="flex gap-2 " >
-        <p><a href="">Home</a></p>
-        <p><a href="">Home</a></p>
-        <p><a href="">Home</a></p>
-        <p><a href="">Home</a></p>
-        <p><a href="">Home</a></p>
-      </div>
-      <div className="flex gap-4 ">
-        <button><i class="fa-solid fa-magnifying-glass"></i></button>
-        <button><i class="fa-solid fa-cart-shopping"></i></button>
-        <button><i class="fa-solid fa-user"></i></button>
+      <div className="flex gap-10 ">
+        <NavLink to="/createItem" >
+          <button
+          className="bg-slate-800 rounded px-3 py-1 cursor-pointer"
+          ><i class="fa-regular fa-square-plus"></i></button>
+        </NavLink>
+        <button
+        className="bg-slate-800 rounded px-3 py-1 cursor-pointer"
+        ><i class="fa-regular fa-sun"></i></button>
       </div>
     </div>
   )
