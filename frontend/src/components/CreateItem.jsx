@@ -1,10 +1,12 @@
 import { useState } from "react";
-import {useProductStore} from '../store/product';
+import {useProductStore} from '../store/userStore';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import productsStore from "../store/productsStore";
 
 export default function CreateItem() {
 
+  const {products} = productsStore();
   const navigate = useNavigate();
 
   const [newProduct, setNewProduct] = useState({
@@ -12,13 +14,14 @@ export default function CreateItem() {
       urlIamge: '',
       price: 0,
     })
-
+    
     async function handelSnedDataToDataBase(e) {
       e.preventDefault();
       try {
         const res = await axios.post("http://127.0.0.1:8000/items/add", newProduct);
         const data = await res.data;
-        console.log(data.status, data.message);
+        console.log('from in ', data.status, data.message);
+        // addProducts(newProduct)
         navigate("/")
       } catch (err) {
         console.log(err, err.message);

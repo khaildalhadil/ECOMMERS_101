@@ -21,8 +21,11 @@ app.use((req, res, next) => {
 
 export default app;
 
-import router from './routers/itemRouters.js';
-app.use('/', router);
+import itemRouter from './routers/itemRouters.js';
+app.use('/', itemRouter);
+
+import userRouter from './routers/userRouters.js';
+app.use('/', userRouter)
 
 app.use('*', (req, res, next)=> {
   res.status(404).json({

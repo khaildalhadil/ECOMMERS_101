@@ -1,6 +1,18 @@
 import Card from '../components/Card.jsx';
+import { useMyItesm } from '../itemsContext.jsx';
+import productsStore from "../store/productsStore";
+import { useEffect } from 'react';
 
-export default function Products ({products}) {
+export default function Products () {
+
+  const {products, fetchProducts, deleteProduct} = productsStore();
+  // const {items, getItems} = useMyItesm();
+  
+  useEffect(() =>{
+    getItems()
+  }, [items])
+  
+  console.log("Re")
   return(
     <div className=" w-2/3 py-4 font-mono m-auto" >
       <div className="w-full m-auto " >

@@ -2,20 +2,18 @@ import axios from "axios";
 import { useState } from "react";
 import UpdateUI from './UpdateUI.jsx';
 import { Navigate, useNavigate } from "react-router-dom";
+import productsStore from "../store/productsStore";
 
 export default function Card({item}) {
+
+  const {products, deleteProduct, fetchProducts} = productsStore();
 
   const [openUpdateUI, setOpenUpdateUI] = useState(false);
   // console.log(item);
 
   async function handleDelete(id) {
-    try {
-      const res = await axios.delete(`http://127.0.0.1:8000/items/${id}`);
-      const data = res.status;
-      console.log(data);
-    } catch(err) {
-      console.log(err);
-    }
+    deleteProduct(id);
+    setOpenUpdateUI(false);
   }
 
   async function dataToSend(data) {
@@ -60,11 +58,11 @@ export default function Card({item}) {
         className="fa-solid fa-trash-can p-2 rounded bg-red-600 cursor-pointer"></i>  
       </div>
         <div>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
+          <i className="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star"></i>
+          <i className="fa-regular fa-star"></i>
         </div>
       </div>
     </div>
